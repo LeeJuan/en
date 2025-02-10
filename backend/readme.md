@@ -94,3 +94,19 @@ my-project/
 - **MySQL**: 8.0
 
 
+## 내부설정 명령어
+
+콘테이너 내부 실행
+
+```bash
+docker exec -it en-backend-1 sh
+```
+
+에러 확인
+
+## frontend
+
+```bash
+docker exec -it backend sh
+```
+

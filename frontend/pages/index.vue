@@ -1,15 +1,16 @@
 <template>
-    <div>
-      <h1>Welcome to My Nuxt 3 Application2</h1>
-      <p>This is the home page.</p>
-    </div>
+    <v-container>
+      <v-row>
+        <v-col>
+          <v-btn color="primary" @click="sayHello">Vuetify 버튼3</v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
   </template>
   
   <script setup>
-    // 필요한 로직이 있다면 여기에 추가
+  const sayHello = () => {
+    alert('Vuetify 버튼이 클릭되었습니다!')
+  }
   </script>
-  
-  <style scoped>
-  /* 필요한 스타일을 추가 */
-  </style>
   
