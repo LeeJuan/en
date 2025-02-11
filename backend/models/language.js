@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     // 필요한 다른 컬럼들 추가...
   }, {
     tableName: 'languages',  // 테이블 이름을 "languages"로 지정
-    timestamps: true
+    timestamps: true,
+    underscored: true
   });
 
   Language.associate = function(models) {

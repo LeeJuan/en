@@ -2,16 +2,23 @@ const express = require('express');
 const router = express.Router();
 const { Language, Example, Translation } = require('../models');
 
-// 전체 언어 조회 (예제와 번역 포함)
+// GET /languages?page=1&limit=100
 router.get('/', async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 100;
+  const offset = (page - 1) * limit;
   try {
-    const languages = await Language.findAll({
-      include: [
-        { model: Example },
-        { model: Translation }
-      ]
+    const { count, rows } = await Language.findAndCountAll({
+      limit,
+      offset,
+      order: [['id', 'ASC']]
     });
-    res.json(languages);
+    res.json({
+      data: rows,
+      total: count,
+      page,
+      totalPages: Math.ceil(count / limit)
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -38,8 +45,11 @@ router.post('/', async (req, res) => {
   try {
     const { word } = req.body;
     const newLanguage = await Language.create({ word });
+    console.log('Created record:', newLanguage.toJSON());
+
     res.status(201).json(newLanguage);
   } catch (error) {
+    console.log('Created record:', error.message);
     res.status(500).json({ error: error.message });
   }
 });

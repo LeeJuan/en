@@ -110,3 +110,16 @@ docker exec -it en-backend-1 sh
 docker exec -it backend sh
 ```
 
+## MYSQL
+
+```bash
+docker exec -it en-mysql-1 mysql -u myuser -p
+```
+
+## backend
+
+```bash
+docker exec -it en-backend-1 sh
+USE mydb;
+SELECT * FROM languages LIMIT 10;
+```

@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     tableName: 'examples',
-    timestamps: true
+    timestamps: true,
+    underscored: true
   });
   
   Example.associate = function(models) {

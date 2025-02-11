@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     tableName: 'translations',
-    timestamps: true
+    timestamps: true,
+    underscored: true
   });
   
   Translation.associate = function(models) {
